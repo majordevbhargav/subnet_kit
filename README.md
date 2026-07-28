@@ -13,7 +13,15 @@ a range bar showing the network address, usable host range, and broadcast addres
   automatically from largest to smallest, and get an allocation plan with no wasted address space.
 - IPv6 prefix calculator: enter an address and prefix length and get the compressed network address, the
   last address in the block, and the address count for that prefix.
+- Supernetting / route summarization: enter two or more networks and get the smallest single CIDR block
+  that covers all of them, with a bar showing where each one sits inside the summarized route.
+- IP converter: turn any IPv4 address into its binary, hexadecimal, and unsigned 32 bit integer forms.
+- Reverse DNS: generate the PTR record name for an address, plus the reverse zone name at the /24, /16,
+  and /8 boundaries.
+- Subnet list view: split a base network into every subnet at a chosen prefix length and see them all in
+  one table (capped at 512 rows so the list stays readable).
 - Every panel includes an inline SVG visualization built from plain React, no charting library required.
+- A toggle in the header switches between a dark "blue" theme and a minimal "white" theme.
 
 ## Running locally
 
@@ -24,32 +32,30 @@ npm run dev
 
 Then open http://localhost:3000.
 
-## Deploying on Vercel
 
-This is a standard Next.js app with the App Router, so Vercel detects it automatically:
-
-1. Push this repository to GitHub (see below).
-2. Go to vercel.com, choose New Project, and import the repository.
-3. Leave the build settings on their defaults (Next.js preset) and deploy.
-
-No environment variables are required.
-
-## Pushing this repository to GitHub yourself
+## Pushing this update as a branch on your existing repo
 
 This project was generated in a sandboxed environment without network access, so it could not be pushed to
-GitHub directly. From the folder you download, run:
+GitHub directly. To add these four new features to an existing checkout of
+`https://github.com/majordevbhargav/subnet_kit` on a new branch, without touching `main`:
 
 ```
-git init
+cd subnet_kit
+git checkout main
+git pull
+git checkout -b feature/network-tools
+```
+
+Copy `app/`, `components/`, `lib/`, and `README.md` from this download over the matching folders in your
+checkout (they replace the old versions), then:
+```
 git add .
-git commit -m "Initial commit: subnetkit"
-git branch -M main
-git remote add origin https://github.com/majordevbhargav100/subnetkit.git
-git push -u origin main
+git commit -m "Add supernetting, IP converter, reverse DNS, and subnet list tools"
+git push -u origin feature/network-tools
 ```
 
-Create the empty `subnetkit` repository on your GitHub account first (majordevbhargav100), without a README,
-so the push above does not conflict.
+Then open a pull request from `feature/network-tools` into `main` on GitHub. Nothing merges into `main`
+until you review and approve it there.
 
 ## A note on naming
 
@@ -73,6 +79,7 @@ subnetkit/
     page.js
   components/
     theme.js
+    ThemeContext.js
     Tabs.js
     ResultRow.js
     BinaryOctetGrid.js
@@ -80,8 +87,16 @@ subnetkit/
     CidrCalculator.js
     VlsmPlanner.js
     Ipv6Calculator.js
+    SupernetTool.js
+    IpConverterTool.js
+    ReverseDnsTool.js
+    SubnetListTool.js
   lib/
     subnet.js
     vlsm.js
     ipv6.js
+    supernet.js
+    ipconvert.js
+    reversedns.js
+    subnetlist.js
 ```
