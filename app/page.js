@@ -4,12 +4,20 @@ import Tabs from "../components/Tabs";
 import CidrCalculator from "../components/CidrCalculator";
 import VlsmPlanner from "../components/VlsmPlanner";
 import Ipv6Calculator from "../components/Ipv6Calculator";
+import SupernetTool from "../components/SupernetTool";
+import IpConverterTool from "../components/IpConverterTool";
+import ReverseDnsTool from "../components/ReverseDnsTool";
+import SubnetListTool from "../components/SubnetListTool";
 import { useTheme } from "../components/ThemeContext";
 
 const tabItems = [
   { key: "cidr", label: "IPv4 subnet and CIDR" },
   { key: "vlsm", label: "VLSM planner" },
   { key: "ipv6", label: "IPv6 prefix" },
+  { key: "supernet", label: "Supernetting" },
+  { key: "ipconvert", label: "IP converter" },
+  { key: "reversedns", label: "Reverse DNS" },
+  { key: "subnetlist", label: "Subnet list" },
 ];
 
 export default function Page() {
@@ -57,6 +65,10 @@ export default function Page() {
         {active === "cidr" ? <CidrCalculator /> : null}
         {active === "vlsm" ? <VlsmPlanner /> : null}
         {active === "ipv6" ? <Ipv6Calculator /> : null}
+        {active === "supernet" ? <SupernetTool /> : null}
+        {active === "ipconvert" ? <IpConverterTool /> : null}
+        {active === "reversedns" ? <ReverseDnsTool /> : null}
+        {active === "subnetlist" ? <SubnetListTool /> : null}
 
         <footer style={{ marginTop: 60, fontFamily: theme.sans, fontSize: 12, color: theme.muted }}>
           Built with Next.js. Runs entirely in the browser, no data leaves your device.

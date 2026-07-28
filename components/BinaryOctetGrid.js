@@ -1,9 +1,10 @@
 "use client";
 import { useTheme } from "./ThemeContext";
 
-export default function BinaryOctetGrid({ binaryOctets, prefix, caption }) {
+export default function BinaryOctetGrid({ binaryOctets, prefix, caption, plain }) {
   const { theme } = useTheme();
   const bits = binaryOctets.join("").split("");
+  const effectivePrefix = plain ? -1 : prefix;
 
   return (
     <div style={{ marginTop: 14 }}>
@@ -17,7 +18,7 @@ export default function BinaryOctetGrid({ binaryOctets, prefix, caption }) {
           <div key={octetIndex} style={{ display: "flex", gap: 3 }}>
             {bits.slice(octetIndex * 8, octetIndex * 8 + 8).map((bit, bitIndex) => {
               const globalIndex = octetIndex * 8 + bitIndex;
-              const isNetworkBit = globalIndex < prefix;
+              const isNetworkBit = globalIndex < effectivePrefix;
               return (
                 <div
                   key={bitIndex}
@@ -43,10 +44,12 @@ export default function BinaryOctetGrid({ binaryOctets, prefix, caption }) {
           </div>
         ))}
       </div>
-      <div style={{ display: "flex", gap: 16, marginTop: 8, fontFamily: theme.sans, fontSize: 11, color: theme.muted }}>
-        <span><i style={{ display: "inline-block", width: 10, height: 10, background: theme.accent, borderRadius: 2, marginRight: 6 }} />Network portion</span>
-        <span><i style={{ display: "inline-block", width: 10, height: 10, background: theme.panelRaised, border: `1px solid ${theme.border}`, borderRadius: 2, marginRight: 6 }} />Host portion</span>
-      </div>
+      {!plain ? (
+        <div style={{ display: "flex", gap: 16, marginTop: 8, fontFamily: theme.sans, fontSize: 11, color: theme.muted }}>
+          <span><i style={{ display: "inline-block", width: 10, height: 10, background: theme.accent, borderRadius: 2, marginRight: 6 }} />Network portion</span>
+          <span><i style={{ display: "inline-block", width: 10, height: 10, background: theme.panelRaised, border: `1px solid ${theme.border}`, borderRadius: 2, marginRight: 6 }} />Host portion</span>
+        </div>
+      ) : null}
     </div>
   );
 }
