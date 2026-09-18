@@ -1,6 +1,6 @@
 # SubnetKit
 
-A browser-based IPv4, IPv6, CIDR, VLSM, route-summarization, and DNS utility built with Next.js. Each calculation is paired with a visual representation of the address space or network structure.
+A browser-based networking toolkit for **IPv4, IPv6, CIDR, VLSM, route summarization, and address utilities**.
 
 ## Features
 
@@ -9,45 +9,16 @@ A browser-based IPv4, IPv6, CIDR, VLSM, route-summarization, and DNS utility bui
 - VLSM planning
 - IPv6 prefix calculations
 - Supernetting and route summarization
-- IPv4 binary, hexadecimal, and integer conversion
-- Reverse DNS / PTR name generation
+- IP format conversion
+- Reverse DNS / PTR generation
 - Subnet list generation
-- Inline network and address visualizations
-- Light and dark presentation themes
+- Network and address visualizations
 
-## Tech Stack
+## Technology
 
-- Next.js
-- React
-- JavaScript
-- SVG-based visualizations
+**Next.js · React · JavaScript · SVG**
 
-## Project Structure
-
-```text
-subnetkit/
-├── app/
-│   ├── layout.js
-│   └── page.js
-├── components/
-│   ├── CidrCalculator.js
-│   ├── VlsmPlanner.js
-│   ├── Ipv6Calculator.js
-│   ├── SupernetTool.js
-│   ├── IpConverterTool.js
-│   ├── ReverseDnsTool.js
-│   └── SubnetListTool.js
-└── lib/
-    ├── subnet.js
-    ├── vlsm.js
-    ├── ipv6.js
-    ├── supernet.js
-    ├── ipconvert.js
-    ├── reversedns.js
-    └── subnetlist.js
-```
-
-## Running Locally
+## Run Locally
 
 ```bash
 git clone https://github.com/majordevbhargav/subnet_kit.git
@@ -58,21 +29,31 @@ npm run dev
 
 Open `http://localhost:3000`.
 
-## Why It Exists
+## Why I Built It
 
-Subnetting is easier to reason about when the arithmetic and the resulting address space are visible together. This project is both a networking utility and a practical frontend exercise.
+Subnetting is one of the foundations of networking. I wanted to build a tool that does more than calculate an answer by also making the address space easier to understand visually.
+
+This project connects my networking learning with frontend development.
+
+## Learning Outcomes
+
+- IPv4 and IPv6 addressing
+- CIDR and VLSM
+- Network calculations
+- JavaScript application logic
+- Next.js component design
+- Data visualization
 
 ## Future Direction
 
-- IPv6 subnet planning improvements
-- Better validation and edge-case handling
 - Exportable subnet plans
+- More IPv6 planning tools
 - Network design templates
-- More routing and address-management utilities
+- Additional routing utilities
+- Stronger validation and edge-case coverage
 
 ## Author
 
 **Dev Bhargav**
 
-- GitHub: https://github.com/majordevbhargav
-- LinkedIn: https://www.linkedin.com/in/devbhargav100
+[GitHub](https://github.com/majordevbhargav) · [LinkedIn](https://www.linkedin.com/in/devbhargav100)
